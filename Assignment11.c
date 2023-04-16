@@ -1,8 +1,30 @@
 //Convert an decimal to its binary equivalent using a bitwise operator
+#include <stdio.h>
+#define INT_SIZE sizeof(int) * 8 /* Size of int in bits */
 
 int main()
 {
-  int N = 7;
-  
-  return 0;
+    int num, index, i;
+    int bin[INT_SIZE];
+
+    printf("Enter any number: ");
+    scanf("%d", &num);
+
+    index = INT_SIZE - 1;
+
+    while(index >= 0)
+    {
+        bin[index] = num & 1;
+        
+        index--;
+        num >>= 1;
+    }
+
+    printf("Converted binary: ");
+    for(i=0; i<INT_SIZE; i++)
+    {
+        printf("%d", bin[i]);
+    }
+
+    return 0;
 }
